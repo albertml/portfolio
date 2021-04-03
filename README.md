@@ -1,6 +1,6 @@
 ### Hi there 👋
 
-**albertml/albertml** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+**albertml/albertml** ✨ _Welcome to my GitHub profile_ ✨
 
 Here are some ideas to get you started:
 
