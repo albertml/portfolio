@@ -260,27 +260,48 @@
 
                 <div class="col-lg-6">
                     <!-- form fields -->
-                    <form name="contact" method="POST" netlify>
-                      <p>
-                        <label>Your Name: <input type="text" name="name" /></label>
-                      </p>
-                      <p>
-                        <label>Your Email: <input type="email" name="email" /></label>
-                      </p>
-                      <p>
-                        <label>Your Role: <select name="role[]" multiple>
-                          <option value="leader">Leader</option>
-                          <option value="follower">Follower</option>
-                        </select></label>
-                      </p>
-                      <p>
-                        <label>Message: <textarea name="message"></textarea></label>
-                      </p>
-                      <p>
-                        <button type="submit">Send</button>
-                      </p>
+                    <form name="contact" method="POST" data-netlify="true">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" required></textarea>
+
+                        <!-- Add a hidden input field with a unique name attribute for Netlify form handling -->
+                        <input type="hidden" name="form-name" value="contact">
+
+                        <button type="button" onclick="submitForm()">Submit</button>
                     </form>
                     
+                    <script>
+                        function submitForm() {
+                            // Gather form data
+                            var formData = new FormData(document.getElementById('contact-form'));
+
+                            // Send the form data to Netlify's form submission endpoint using Fetch API
+                            fetch('/', {
+                                method: 'POST',
+                                body: formData,
+                            })
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Network response was not ok');
+                                }
+                                return response.text();
+                            })
+                            .then(data => {
+                                // Handle successful form submission (optional)
+                                console.log(data);
+                            })
+                            .catch(error => {
+                                // Handle error during form submission (optional)
+                                console.error('There was an error submitting the form:', error);
+                            });
+                        }
+                    </script>
                 </div>
 
             </div>
