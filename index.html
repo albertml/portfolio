@@ -260,15 +260,26 @@
 
                 <div class="col-lg-6">
                     <!-- form fields -->
-                    <form>
-                        <input type="text" class="form-control form-control-lg" placeholder="Name">
-                        <input type="email" class="form-control mt-3" placeholder="Email">
-                        <input type="text" class="form-control mt-3" placeholder="Subject">
-                        <div class="mb-3 mt-3">
-                            <textarea class="form-control" rows="5" id="comment" name="text" placeholder="Project Details"></textarea>
-                        </div>
+                    <form name="contact" method="POST" netlify>
+                      <p>
+                        <label>Your Name: <input type="text" name="name" /></label>
+                      </p>
+                      <p>
+                        <label>Your Email: <input type="email" name="email" /></label>
+                      </p>
+                      <p>
+                        <label>Your Role: <select name="role[]" multiple>
+                          <option value="leader">Leader</option>
+                          <option value="follower">Follower</option>
+                        </select></label>
+                      </p>
+                      <p>
+                        <label>Message: <textarea name="message"></textarea></label>
+                      </p>
+                      <p>
+                        <button type="submit">Send</button>
+                      </p>
                     </form>
-                    <button type="button" class="btn btn-success mt-3">Contact Me</button>
                     
                 </div>
 
